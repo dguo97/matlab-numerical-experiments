@@ -1,5 +1,8 @@
 # MATLAB Numerical Experiments
 
+[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=dguo97/matlab-numerical-experiments)
+[![MATLAB tests](https://github.com/dguo97/matlab-numerical-experiments/actions/workflows/tests.yml/badge.svg)](https://github.com/dguo97/matlab-numerical-experiments/actions/workflows/tests.yml)
+
 A small collection of MATLAB scripts and functions covering numerical methods,
 Monte Carlo simulation, plotting and recursive geometry.
 
@@ -22,14 +25,12 @@ No local MATLAB install is needed. You can run everything in a browser with [MAT
 
 ### Option 1: straight from GitHub (nothing to download)
 
-For a public repository, replace `YOUR-USERNAME` below with the GitHub username that owns it.
-
 - **One click:** open
-  `https://matlab.mathworks.com/open/github/v1?repo=YOUR-USERNAME/matlab-numerical-experiments`
+  `https://matlab.mathworks.com/open/github/v1?repo=dguo97/matlab-numerical-experiments`
   and MATLAB Online opens with the repository loaded.
 - **From the Command Window:** paste these lines into MATLAB Online:
   ```matlab
-  unzip('https://github.com/YOUR-USERNAME/matlab-numerical-experiments/archive/refs/heads/main.zip')
+  unzip('https://github.com/dguo97/matlab-numerical-experiments/archive/refs/heads/main.zip')
   cd matlab-numerical-experiments-main
   demo
   ```
