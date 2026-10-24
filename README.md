@@ -25,7 +25,7 @@ Models a quantity governed by a first-order linear ODE with a sinusoidal forcing
 and `plot_solution` shows the resulting curve on [5, 6].
 The same folder studies Bessel's equation of order zero, J'' + J'/t + J = 0:
 `bessel_series` sums the power series for J0(1) and J0'(1), and
-`plot_bessel` solves the ODE with `ode45` and compares it with the decay envelope C·t^(-b)·cos(t + θ).
+`plot_bessel` solves the ODE with `ode45` and compares it with the large-t asymptotic form √(2/(πt))·cos(t − π/4).
 
 ### `random-simulations/`
 Two Monte Carlo experiments, each compared with a theoretical bound.
@@ -33,6 +33,7 @@ Two Monte Carlo experiments, each compared with a theoretical bound.
 and plots the empirical P[streak ≥ k] against the union bound N / 2^(k−1).
 `card_collecting` simulates the coupon-collector problem (draws needed to see all N cards)
 and plots P[T > N log N + cN] against the bound e^(−c).
+Both take an optional seed, e.g. `card_collecting(1000, 2000, 1)`, for reproducible results.
 
 ### `implicit-plots-and-conics/`
 `implicit_surface` draws the level set of a sum of sines in three variables with `fimplicit3`,
@@ -52,12 +53,25 @@ alongside a guide curve C·R^a.
 and `hilbert_curve` builds a Hilbert-type curve by recursive subdivision.
 `has_equal_line_sums` checks whether every row, column and both diagonals of a matrix have the same sum.
 
+## How it works
+
+Every function's help text (`help functionName`) includes a short **Method** note.
+In brief:
+
+- `card_collecting` sums geometric waiting times instead of drawing cards one at a time, which gives the same distribution much faster.
+- `count_lattice_points` counts one quadrant exactly and uses symmetry for the rest.
+- `lattice_point_error`'s guide curve C·R^a is an empirical comparison, not a proven bound.
+- `bisection_root` converges linearly (about 35 steps), `newton_root` quadratically (a handful of steps).
+- `koch` and `hilbert_curve` build all vertices recursively and plot once.
+
 ## Tests
 
 `tests/run_tests.m` checks known values (for example `count_lattice_points(2)` is 13,
 both root finders return about 1.16556, `has_equal_line_sums(magic(4))` is true),
-output sizes for the curves, and loose statistical ranges for the simulations.
+output sizes for the curves, loose statistical ranges for the simulations, and that invalid input
+(negative radii or levels, wrong argument counts, an interval with no sign change) raises a clear error.
 It ends with `All tests passed.` if everything is correct.
+A GitHub Actions workflow (`.github/workflows/tests.yml`) runs the same tests on every push.
 
 ## Licence
 

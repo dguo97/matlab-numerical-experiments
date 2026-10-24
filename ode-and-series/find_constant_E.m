@@ -5,6 +5,9 @@ function E = find_constant_E(target, t, k)
 %   with w = pi/12. E = FIND_CONSTANT_E(TARGET, T, K) solves y(T) = TARGET.
 %   Defaults: TARGET = 21, T = 7, K = 0.3892.
 %   (TARGET = 15 at T = 8 gives the same value of E to within rounding of K.)
+%   Method: the solution is a particular solution plus E exp(-k t), where
+%   E exp(-k t) is the decaying homogeneous part. Setting y(T) = TARGET and
+%   solving the linear equation for E gives E directly.
 %   Example:  E = find_constant_E(21, 7)   % about 322.1
 
 if nargin < 1, target = 21; end

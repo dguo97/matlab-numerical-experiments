@@ -7,4 +7,6 @@ function surface_plot
 Z = (X.^2 - Y.^2) ./ (X.^2 + Y.^2);
 surf(X, Y, Z, 'EdgeColor', 'none');
 xlabel('x'); ylabel('y'); zlabel('z');
+title('z = (x^2 - y^2)/(x^2 + y^2)');
+colorbar
 end

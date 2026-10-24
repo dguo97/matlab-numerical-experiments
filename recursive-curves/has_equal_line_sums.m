@@ -3,8 +3,13 @@ function tf = has_equal_line_sums(A)
 %   This is the "magic sum" property only: entries need not be distinct, so the
 %   test also accepts matrix powers of magic squares, e.g.
 %       has_equal_line_sums(magic(3)^5)
+%   Method: collect all row sums, column sums and the two diagonal traces and
+%   compare them with the first value.
 %   Example:  has_equal_line_sums(magic(4))   % returns true
 
+if ~isnumeric(A) || ~ismatrix(A) || isempty(A)
+    error('has_equal_line_sums:invalidInput', 'A must be a non-empty numeric matrix.');
+end
 if size(A,1) ~= size(A,2)
     tf = false;
     return

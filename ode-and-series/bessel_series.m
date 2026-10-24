@@ -6,9 +6,14 @@ function J = bessel_series(tol)
 %   at t = 1. Both series alternate in sign, so stopping when the latest term
 %   is below TOL bounds the truncation error by TOL (default 1e-4).
 %   J is [value terms error; value terms error]: row 1 for J0(1), row 2 for J0'(1).
+%   Method: both series alternate with rapidly shrinking terms, so the first
+%   omitted term bounds the truncation error.
 %   Example:  J = bessel_series(1e-4)   % J(1,1) is about 0.7652
 
 if nargin < 1, tol = 1e-4; end
+if ~(isscalar(tol) && tol > 0)
+    error('bessel_series:invalidInput', 'tol must be a positive scalar.');
+end
 
 t = 1;
 [v0, n0, e0] = alternating_sum(@(k) (-1)^k * (t/2)^(2*k) / factorial(k)^2, tol);

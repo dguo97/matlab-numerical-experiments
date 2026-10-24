@@ -21,11 +21,16 @@ assert(abs(y(end,1) + 0.1775968) < 1e-3, 'bessel_rhs: J0(5)');
 
 %% random-simulations (statistical checks with generous tolerances)
 close all
-m = longest_streak_simulation(1000, 200);
+m = longest_streak_simulation(1000, 200, 1);
 assert(numel(m) == 200 && mean(m) > 6 && mean(m) < 14, 'longest_streak_simulation');
 
-T = card_collecting(100, 500);
+T = card_collecting(100, 500, 1);
 assert(numel(T) == 500 && abs(mean(T) - 518.7) < 52, 'card_collecting');
+
+% the seed makes results reproducible
+m2 = longest_streak_simulation(1000, 200, 1);
+T2 = card_collecting(100, 500, 1);
+assert(isequal(m, m2) && isequal(T, T2), 'seeded simulations must be reproducible');
 close all
 
 %% implicit-plots-and-conics
@@ -63,4 +68,27 @@ assert(has_equal_line_sums(magic(3)^5), 'magic(3)^5');
 assert(~has_equal_line_sums([1 2; 3 4]), 'non-magic');
 assert(~has_equal_line_sums(ones(2,3)), 'non-square');
 
+%% input validation (bad input must give an error, not a wrong answer)
+assert(throws(@() count_lattice_points(-1)),            'lattice negative R');
+assert(throws(@() count_lattice_points('a')),           'lattice non-numeric R');
+assert(throws(@() koch([0;0], [1;0], -1)),              'koch negative level');
+assert(throws(@() koch([0;0], [1;0], 1.5)),             'koch non-integer level');
+assert(throws(@() hilbert_curve([0;0], [1;0], -2)),     'hilbert negative level');
+assert(throws(@() longest_streak_simulation(0, 10)),    'streak N = 0');
+assert(throws(@() card_collecting(100, -5)),            'cards M < 0');
+assert(throws(@() bisection_root(1, 1.1)),              'bisection without a sign change');
+assert(throws(@() has_equal_line_sums([])),             'empty matrix');
+assert(throws(@() conic_plot(1, 2, 3)),                 'conic_plot wrong arg count');
+close all
+
 disp('All tests passed.')
+
+function tf = throws(f)
+%THROWS True if calling the function handle F raises an error.
+tf = false;
+try
+    f();
+catch
+    tf = true;
+end
+end

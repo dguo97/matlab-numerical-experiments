@@ -2,12 +2,23 @@ function pts = koch(pl, pr, level)
 %KOCH Koch curve between the column vectors PL and PR.
 %   KOCH(PL, PR, LEVEL) plots the curve after LEVEL levels of recursion.
 %   pts = KOCH(...) also returns the 2 x n matrix of vertices.
+%   Method: each segment is replaced by four segments of one third the length,
+%   the middle two forming an equilateral peak of height sqrt(3)/6 of the
+%   original length. Level n has 4^n segments.
 %   Example:  koch([0;0], [1;0], 4); axis equal
+
+if numel(pl) ~= 2 || numel(pr) ~= 2 || ~isnumeric(pl) || ~isnumeric(pr)
+    error('koch:invalidInput', 'PL and PR must be numeric 2-element vectors.');
+end
+if ~(isscalar(level) && level >= 0 && level == floor(level))
+    error('koch:invalidInput', 'LEVEL must be a non-negative integer.');
+end
 
 pts = koch_points(pl(:), pr(:), level);
 if nargout == 0
     plot(pts(1,:), pts(2,:), 'b');
     axis equal
+    title(sprintf('Koch curve, level %d', level));
     clear pts
 end
 end

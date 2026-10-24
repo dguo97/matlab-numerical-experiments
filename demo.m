@@ -14,8 +14,8 @@ figure; plot_solution;
 figure; plot_bessel;
 
 %% 2. Random simulations
-longest_streak_simulation(10000, 2000);   % opens 2 figures
-card_collecting(1000, 2000);              % opens 2 figures
+longest_streak_simulation(10000, 2000, 1);   % opens 2 figures
+card_collecting(1000, 2000, 1);              % opens 2 figures
 
 %% 3. Implicit plots and conics
 figure; implicit_surface;
