@@ -20,7 +20,7 @@ help count_lattice_points  % every function has built-in help with an example
 
 No local MATLAB install is needed. You can run everything in a browser with [MATLAB Online](https://matlab.mathworks.com):
 
-1. Sign in at https://matlab.mathworks.com with a (free) MathWorks account. Free accounts have a monthly usage allowance, which is enough for these examples.
+1. Sign in at https://matlab.mathworks.com with your MathWorks account.
 2. Get the code into MATLAB Online. On this GitHub page click the green **Code** button, then **Download ZIP**. Then either:
    - unzip it on your computer and drag the folder into the **Current Folder** panel on the left (or click **Upload** there), or
    - upload the ZIP itself, then right-click it in the Current Folder panel and choose **Extract**.
