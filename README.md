@@ -16,6 +16,28 @@ run('tests/run_tests.m')   % runs the regression tests
 help count_lattice_points  % every function has built-in help with an example
 ```
 
+## Running in MATLAB Online
+
+No local MATLAB install is needed. You can run everything in a browser with [MATLAB Online](https://matlab.mathworks.com):
+
+1. Sign in at https://matlab.mathworks.com with a (free) MathWorks account. Free accounts have a monthly usage allowance, which is enough for these examples.
+2. Get the code into MATLAB Online. On this GitHub page click the green **Code** button, then **Download ZIP**. Then either:
+   - unzip it on your computer and drag the folder into the **Current Folder** panel on the left (or click **Upload** there), or
+   - upload the ZIP itself, then right-click it in the Current Folder panel and choose **Extract**.
+3. Open the repository folder in the Current Folder panel (double-click it) so it is the current folder. You should see `demo.m` and the `tests` folder.
+4. In the **Command Window**, type:
+   ```matlab
+   demo
+   ```
+   Each example opens its own figure window. To check everything works, also run:
+   ```matlab
+   run('tests/run_tests.m')
+   ```
+   It prints `All tests passed.` at the end.
+5. To try a single function, type its name, for example `koch([0;0],[1;0],4)`, or `help koch` to see its documentation.
+
+Menu labels can vary slightly between MATLAB Online versions.
+
 ## What each folder does
 
 ### `ode-and-series/`
