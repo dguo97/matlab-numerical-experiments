@@ -18,25 +18,39 @@ help count_lattice_points  % every function has built-in help with an example
 
 ## Running in MATLAB Online
 
-No local MATLAB install is needed. You can run everything in a browser with [MATLAB Online](https://matlab.mathworks.com):
+No local MATLAB install is needed. You can run everything in a browser with [MATLAB Online](https://matlab.mathworks.com). Sign in with your MathWorks account, then use either option.
 
-1. Sign in at https://matlab.mathworks.com with your MathWorks account.
-2. Get the code into MATLAB Online. On this GitHub page click the green **Code** button, then **Download ZIP**. Then either:
-   - unzip it on your computer and drag the folder into the **Current Folder** panel on the left (or click **Upload** there), or
-   - upload the ZIP itself, then right-click it in the Current Folder panel and choose **Extract**.
-3. Open the repository folder in the Current Folder panel (double-click it) so it is the current folder. You should see `demo.m` and the `tests` folder.
-4. In the **Command Window**, type:
-   ```matlab
-   demo
-   ```
-   Each example opens its own figure window. To check everything works, also run:
-   ```matlab
-   run('tests/run_tests.m')
-   ```
-   It prints `All tests passed.` at the end.
-5. To try a single function, type its name, for example `koch([0;0],[1;0],4)`, or `help koch` to see its documentation.
+### Option 1: straight from GitHub (nothing to download)
 
-Menu labels can vary slightly between MATLAB Online versions.
+For a public repository, replace `YOUR-USERNAME` below with the GitHub username that owns it.
+
+- **One click:** open
+  `https://matlab.mathworks.com/open/github/v1?repo=YOUR-USERNAME/matlab-numerical-experiments`
+  and MATLAB Online opens with the repository loaded.
+- **From the Command Window:** paste these lines into MATLAB Online:
+  ```matlab
+  unzip('https://github.com/YOUR-USERNAME/matlab-numerical-experiments/archive/refs/heads/main.zip')
+  cd matlab-numerical-experiments-main
+  demo
+  ```
+  `unzip` fetches the repository directly from GitHub into the current folder. If your default branch is not called `main`, change that part of the URL.
+
+### Option 2: upload a ZIP
+
+1. On the GitHub page click the green **Code** button, then **Download ZIP**.
+2. In MATLAB Online, either unzip it on your computer and drag the folder into the **Current Folder** panel on the left (or click **Upload** there), or upload the ZIP itself, then right-click it in the Current Folder panel and choose **Extract**.
+3. Double-click the repository folder so it is the current folder. You should see `demo.m` and the `tests` folder.
+4. In the **Command Window**, type `demo`.
+
+### Check it works
+
+```matlab
+run('tests/run_tests.m')
+```
+
+It prints `All tests passed.` at the end. To try a single function, type its name, for example
+`koch([0;0],[1;0],4)`, or `help koch` to see its documentation.
+Each example in `demo` opens its own figure window. Menu labels can vary slightly between MATLAB Online versions.
 
 ## What each folder does
 
