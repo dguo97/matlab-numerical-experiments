@@ -53,6 +53,41 @@ It prints `All tests passed.` at the end. To try a single function, type its nam
 `koch([0;0],[1;0],4)`, or `help koch` to see its documentation.
 Each example in `demo` opens its own figure window. Menu labels can vary slightly between MATLAB Online versions.
 
+## Run an individual project
+
+`demo` runs everything. To run one project on its own, first make the functions visible to MATLAB
+(run this once per session, with the repository folder as the current folder):
+
+```matlab
+addpath(genpath(pwd))
+```
+
+Then use any row below.
+
+| Project | Run this | What you get |
+|---|---|---|
+| **ode-and-series** | `estimate_decay_rate` | The decay rate, about 0.3892 |
+| | `find_constant_E(21, 7)` | The integration constant, about 322.1 |
+| | `plot_solution` | Plot of the solution on [5, 6] |
+| | `bessel_series` | A 2×3 matrix: value, number of terms and last term for J0(1) (row 1) and J0'(1) (row 2) |
+| | `plot_bessel` | `ode45` solution of Bessel's equation against its asymptotic form |
+| **random-simulations** | `longest_streak_simulation(10000, 2000, 1)` | Two figures: histogram of longest streaks, and the union bound against simulation |
+| | `card_collecting(1000, 2000, 1)` | Two figures: histogram of draws needed, and the tail bound against simulation |
+| **implicit-plots-and-conics** | `implicit_surface` | 3D level set of a sum of sines |
+| | `surface_plot` | Surface z = (x² − y²)/(x² + y²) |
+| | `conic_plot(-1, 0, -2, 0, 0)` | The ellipse x² + 2y² = 1 (any five coefficients work) |
+| | `v = conic_fit` | Least-squares conic through ten data points, plotted with the data; returns the 5 coefficients |
+| **root-finding-and-lattice-points** | `plot_root_function` | Plot of 2x cos x − sin x on [0, 2π] |
+| | `bisection_root` | The root, about 1.16556 (second output is the iteration history) |
+| | `newton_root` | The same root in far fewer iterations |
+| | `count_lattice_points(2)` | 13 |
+| | `lattice_point_error(300)` | Two figures: N(R) against πR², and the error against a guide curve |
+| **recursive-curves** | `koch([0;0], [1;0], 4)` | The Koch curve (level 4) |
+| | `hilbert_curve([0;0], [1;0], 5)` | A Hilbert-type curve (level 5) |
+| | `has_equal_line_sums(magic(4))` | `1` (true); try a non-magic matrix to get `0` |
+
+Use `help functionName` for details of any function, such as its optional arguments.
+
 ## What each folder does
 
 ### `ode-and-series/`
